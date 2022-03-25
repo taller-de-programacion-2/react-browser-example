@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSession } from "../../contexts/auth/Auth";
 import "../../styles/login.scss";
+import { login } from "./service"
 
 const Login = () => {
     const session = useSession();
@@ -38,10 +39,21 @@ const Login = () => {
             </div>}
            
             {/* <p>See other users profiles</p> */}
+            {token &&
+                <div style={{ backgroundColor: 'green' }}>
+                    Succesful login, token: {token}
+                </div>
+            }
+            <div style={{ backgroundColor: 'red' }}>
+                {error}
+            </div>
+            {loading && <div style={{ backgroundColor: 'yellow' }}>
+                Loading ...
+            </div>}
             <div className="form">
                 <div className="form-control">
                     <label>Email</label>
-                    <input type="text"
+                    <input type="email"
                         onChange={updateEmail}
                         disabled={loading}
                         name='email' />

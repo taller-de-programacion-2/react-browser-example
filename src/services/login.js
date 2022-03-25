@@ -21,5 +21,4 @@ const login = async (credentials) => {
         throw new Error(message)
     }
 }
-
-export default { login };
+export default login;
