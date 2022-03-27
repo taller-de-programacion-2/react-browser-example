@@ -19,6 +19,7 @@ function Home() {
         }
     }, [])
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     return (
         <div>
@@ -31,6 +32,9 @@ function Home() {
                     <button onClick={session.logout}>Log out</button>
                 </span>
 =======
+=======
+
+>>>>>>> 4fa69d6 (Use localstorage to remember token)
     return (
         <div className="container">
             <div className="inner-wrapper">
