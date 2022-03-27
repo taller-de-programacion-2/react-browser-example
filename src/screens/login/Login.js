@@ -45,13 +45,15 @@ function Login() {
                     <span>email:</span>
                     <input type="text"
                         onChange={updateEmail}
-                        disabled={loading} />
+                        disabled={loading} 
+                        name='email'/>
                 </div>
                 <div>
                     <span>password:</span>
                     <input type="password"
                         onChange={updatePassword}
-                        disabled={loading} />
+                        disabled={loading}
+                        name='password' />
                 </div>
                 <div>
                     <button onClick={doLogin}
