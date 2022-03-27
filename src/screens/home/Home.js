@@ -8,13 +8,22 @@ function Home({ token, logout }) {
 
     const fetchPage = async (page) => {
         const { data, total_pages } = await listUsers(page);
+<<<<<<< HEAD
+=======
+        setPage(page)
+>>>>>>> 0af5b68 (Use localstorage to remember token)
         setTotal(total_pages);
         setUsers(data);
     };
 
     const UserPages = () => {
+<<<<<<< HEAD
         const nextPage = () => setPage(page + 1);
         const prevPage = () => setPage(page - 1)
+=======
+        const nextPage = () => fetchPage(page + 1);
+        const prevPage = () => fetchPage(page - 1)
+>>>>>>> 0af5b68 (Use localstorage to remember token)
         return <div>
             <ul>
                 {users.map(user => <li key={user.id}>
@@ -33,6 +42,7 @@ function Home({ token, logout }) {
         </div>
     }
     useEffect(() => {
+<<<<<<< HEAD
         console.log(`fetching ${page}`);
         fetchPage(page);
     }, [page]);
@@ -42,6 +52,11 @@ function Home({ token, logout }) {
             console.log("Home: clean up");
         }
     }, [])
+=======
+        fetchPage(1)
+        return () => { }
+    }, []);
+>>>>>>> 0af5b68 (Use localstorage to remember token)
     return (
         <div>
             <div style={{ backgroundColor: 'green' }}>

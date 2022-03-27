@@ -30,20 +30,12 @@ const Login = ({onLogin}) => {
         <div className="container">
             <div className="inner-wrapper">
             <h1>Users</h1>
-            <p>See other users profiles</p>
             <div style={{ backgroundColor: 'red' }}>
                 {error}
             </div>
             {loading && <div style={{ backgroundColor: 'yellow' }}>
                 Loading ...
             </div>}
-           
-            {/* <p>See other users profiles</p> */}
-            {token &&
-                <div style={{ backgroundColor: 'green' }}>
-                    Succesful login, token: {token}
-                </div>
-            }
             <div style={{ backgroundColor: 'red' }}>
                 {error}
             </div>
