@@ -4,10 +4,11 @@ import About from './screens/about/About';
 import {
   SessionProvider,
   WithSession,
-  WithoutSession
+  WithoutSession,
+  Link,
+  Routes,
+  Route
 } from './contexts/auth/Auth';
-
-import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
 const App = () => (
