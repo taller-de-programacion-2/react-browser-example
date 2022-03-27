@@ -1,6 +1,6 @@
 
 export async function login(credentials) {
-    const res = await fetch('https://reqres.in/api/login', {
+    const res = await fetch(process.env.REACT_APP_API_URL, {
         method: 'POST',
         body: JSON.stringify(credentials),
         headers: {
