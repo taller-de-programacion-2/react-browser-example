@@ -1,7 +1,6 @@
 import { useState } from "react";
 import login from "./service"
 import "../../styles/login.scss";
-import { login } from "./service"
 
 const Login = ({onLogin}) => {
     const [email, setEmail] = useState('')
