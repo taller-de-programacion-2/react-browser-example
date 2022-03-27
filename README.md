@@ -1,3 +1,15 @@
+# 3 Local Storage
+* App.js: useEffect para recuperar el token de session guardado en LocalStoraged. Si tiene el token muestra un componente, sino muestra el Login.
+useState ahora el token se guarda aqui.
+* screens/Home/Home.js: useEffect para recuperar el listado de usuarios cuando se monta el componente.
+* LocalStorage: chrome/application/localstorage, es un key-value store de strings.
+* can't update unmounted component: se esta modificando el estado de un componente que ya no se pinta. 
+¿Cual? ¿Como lo corregimos?
+* useEffect: 
+ - unmount hook, se usa para limpieza cuando el componente se desmonta.
+ - condicional, podemos ejecutar el hook cada vez que cambie el valor de un state.
+ 
+
 # 2 Login Connectado
 * agregar .env con la siguiente envvar:
   REACT_APP_API_URL=https://reqres.in
