@@ -1,17 +1,16 @@
 import { useState } from "react";
 import login from "./service"
 
-const Login = () => {
+function Login({onLogin}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const [token, setToken] = useState('')
     const [loading, setLoading] = useState(false)
     const doLogin = async (_) => {
         setLoading(true)
         try {
             const { token } = await login({ email, password })
-            setToken(token)
+            onLogin(token)
         } catch (e) {
             setError(e.message)
         }
@@ -29,11 +28,6 @@ const Login = () => {
         <div>
             <h1>Users</h1>
             <p>See other users profiles</p>
-            {token &&
-                <div style={{ backgroundColor: 'green' }}>
-                    Succesful login, token: {token}
-                </div>
-            }
             <div style={{ backgroundColor: 'red' }}>
                 {error}
             </div>
