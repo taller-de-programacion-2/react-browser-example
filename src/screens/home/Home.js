@@ -14,7 +14,7 @@ function Home({ token, logout }) {
 
     const UserPages = () => {
         const nextPage = () => setPage(page + 1);
-        const prevPage = () => setPage(page - 1)
+        const prevPage = () => setPage(page - 1);
         return <div>
             <ul>
                 {users.map(user => <li key={user.id}>
@@ -42,6 +42,7 @@ function Home({ token, logout }) {
             console.log("Home: clean up");
         }
     }, [])
+
     return (
         <div>
             <div style={{ backgroundColor: 'green' }}>
