@@ -1,13 +1,16 @@
 import { useEffect } from "react";
-import { useSession } from "../../contexts/auth/Auth";
 import Listing from "../../components/listing/Listing";
 import userService from "../../services/users";
-import { Link } from "react-router-dom";
-
 import "../../styles/home.scss";
 
-function Home() {
-  const session = useSession();
+const UserCard = ({ item }) => (
+  <div>
+    {item.first_name} / {item.email}
+    <img src={item.avatar} alt={item.email} />
+  </div>
+);
+
+const Home = () => {
   useEffect(() => {
     return () => {
       console.log("Home: clean up");
@@ -15,28 +18,11 @@ function Home() {
   }, []);
   return (
     <div className="home-container">
-      <div className="menu">
-        <div className="links">
-          <nav>
-            <span style={{ marginRight: "1em" }}>
-              <Link to="/">home</Link>
-            </span>
-            <span>
-              <Link to="/about">about</Link>
-            </span>
-          </nav>
-        </div>
-        <div className="greetings">
-          <div>Token: {session.token}</div>
-          <span>Welcome Home!</span>
-          <button onClick={session.logout}>Log out</button>
-        </div>
-      </div>
       <div className="inner-wrapper">
-        <Listing fetchPage={userService.listUsers} />
+        <Listing ItemComponent={UserCard} fetchPage={userService.listUsers} />
       </div>
     </div>
   );
-}
+};
 
 export default Home;

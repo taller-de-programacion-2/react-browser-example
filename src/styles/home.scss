@@ -10,6 +10,16 @@
     width: 100%;
     color: white;
     padding: 16px 0;
+    align-items: flex-end;
+
+    .links {
+      color: white;
+      padding-left: 18px;
+
+      a {
+        color: white;
+      }
+    }
 
     .links {
       color: white;
@@ -30,12 +40,10 @@
         margin-right: 24px;
       }
       button {
-        margin-top: 16px;
         padding: 8px;
         border-radius: 10px;
         background-color: rgb(43, 86, 126);
         color: white;
-        align-self: right;
       }
     }
   }

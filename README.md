@@ -1,3 +1,6 @@
+# 5 Reducer
+* screens/Login.js: ahora con useReducers.
+
 # 4 Routes & Context
 * package.json: `npm add react-router-dom`
 * contexts/auth: define un contexto de react para manejar la autenticacion y mostrar contenido en base al estado de autenticación.
