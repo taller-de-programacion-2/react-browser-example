@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSession } from "../../contexts/auth/Auth";
 import "../../styles/login.scss";
-import { login } from "./service"
 
 const Login = () => {
     const session = useSession();
