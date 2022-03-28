@@ -1,35 +1,35 @@
 import Login from './screens/login/Login';
 import Home from './screens/home/Home';
+import About from './screens/about/About';
+import {
+  SessionProvider,
+  WithSession,
+  WithoutSession
+} from './contexts/auth/Auth';
+import {
+  Link,
+  Routes,
+  Route
+} from "react-router-dom";
 import './App.css';
-import { useEffect, useState } from 'react';
 
-// Importante discutir: "can't update unmounted component"
-const App = () => {
-  const [token, setToken] = useState();
+const App = () => (
+  <SessionProvider>
+    <WithSession>
+      <div>
+        <Routes>
+          <Route path='/'
+            element={<Home />} />
+          <Route path='/about'
+            element={<About />} />
+        </Routes>
+      </div>
+    </WithSession>
+    <WithoutSession>
+      <Login />
+    </WithoutSession>
+  </SessionProvider>
+);
 
-  const updateToken = (token) => {
-    localStorage.setItem('token', token)
-    setToken(token)
-  };
-
-  const doLogout = () => {
-    localStorage.removeItem('token')
-    setToken('')
-  };
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    setToken(token)
-    return () => { }
-  }, []);
-
-  return (<>
-    {token ?
-      <Home token={token} logout={doLogout} /> :
-      <Login onLogin={updateToken} />
-    }
-  </>
-  );
-}
 
 export default App;

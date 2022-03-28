@@ -4,12 +4,22 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+
   .menu {
     background-color: rgb(23, 33, 59);
     width: 100%;
     color: white;
     padding: 16px 0;
 
+    .links {
+      color: white;
+      padding-left: 18px;
+
+      a {
+        color: white;
+      }
+    }
+    
     .greetings {
       display: flex;
       align-items: center;

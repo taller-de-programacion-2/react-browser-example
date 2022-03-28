@@ -1,4 +1,10 @@
-# 3 Local Storage
+# 4 Routes & Context
+* package.json: `npm add react-router-dom`
+* contexts/auth: define un contexto de react para manejar la autenticacion y mostrar contenido en base al estado de autenticación.
+* App.js: utiliza router para navegar entre Home.js y About.js
+* components/Listing: se extraer el componente para listar items. Tener en cuenta, es simplemente un ejemplo, no es la unica forma de hacerlo. 
+
+# 3 Local Storage & Use Effect
 * App.js: useEffect para recuperar el token de session guardado en LocalStoraged. Si tiene el token muestra un componente, sino muestra el Login.
 useState ahora el token se guarda aqui.
 * screens/Home/Home.js: useEffect para recuperar el listado de usuarios cuando se monta el componente.
