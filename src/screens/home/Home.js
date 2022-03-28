@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { listUsers } from './service'
+import {useSession} from '../../contexts/auth/Auth';
 
-function Home({ token, logout }) {
+
+function Home() {
+    const session = useSession()
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(1);
     const [total, setTotal] = useState(1);
@@ -19,7 +22,7 @@ function Home({ token, logout }) {
             <ul>
                 {users.map(user => <li key={user.id}>
                     {user.first_name} / {user.email}
-                    <img src={user.avatar} />
+                    <img src={user.avatar} alt={user.email}/>
                 </li>)
                 }
             </ul>
@@ -46,12 +49,12 @@ function Home({ token, logout }) {
     return (
         <div>
             <div style={{ backgroundColor: 'green' }}>
-                Token: {token}
+                Token: {session.token}
             </div>
             <div>
                 <span>
                     Welcome Home!
-                    <button onClick={logout}>Log out</button>
+                    <button onClick={session.logout}>Log out</button>
                 </span>
             </div>
             <UserPages />

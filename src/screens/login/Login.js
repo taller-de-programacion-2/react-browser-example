@@ -1,7 +1,8 @@
 import { useState } from "react";
-import login from "./service"
+import { useSession } from "../../contexts/auth/Auth";
 
-const Login = ({onLogin}) => {
+const Login = () => {
+    const session = useSession();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
@@ -9,12 +10,11 @@ const Login = ({onLogin}) => {
     const doLogin = async (_) => {
         setLoading(true)
         try {
-            const { token } = await login({ email, password })
-            onLogin(token)
+            await session.login({ email, password })
         } catch (e) {
             setError(e.message)
+            setLoading(false)
         }
-        setLoading(false)
     }
     const updateEmail = (e) => {
         setEmail(e.target.value)
@@ -39,8 +39,8 @@ const Login = ({onLogin}) => {
                     <span>email:</span>
                     <input type="text"
                         onChange={updateEmail}
-                        disabled={loading} 
-                        name='email'/>
+                        disabled={loading}
+                        name='email' />
                 </div>
                 <div>
                     <span>password:</span>
