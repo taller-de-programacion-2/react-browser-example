@@ -1,22 +1,16 @@
 
-export async function login(credentials) {
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
-        method: 'POST',
-        body: JSON.stringify(credentials),
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    })
-    let json = null
+import axios from "axios";
+
+const  login = async (credentials) => {
     try {
-        json = await res.json()
-    } catch (e) {
-        console.error(e.message ||'error parsing json')
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, {
+            credentials
+        });
+
+        return response;
+    } catch(error) {
+        console.error(error.message);
         throw new Error('Service is not available at the moment')
     }
-    if (!res.ok) {
-        throw new Error(json.error)
-    }
-    return json
 }
+export default login;

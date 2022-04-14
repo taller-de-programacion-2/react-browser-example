@@ -1,10 +1,6 @@
 import Login from './screens/login/Login'
 import './App.css';
 
-function App() {
-  return (
-    <Login />
-  );
-}
+const App = () => <Login />;
 
 export default App;
