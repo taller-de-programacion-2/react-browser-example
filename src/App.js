@@ -4,7 +4,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 // Importante discutir: "can't update unmounted component"
-function App() {
+const App = () => {
   const [token, setToken] = useState();
 
   const updateToken = (token) => {
