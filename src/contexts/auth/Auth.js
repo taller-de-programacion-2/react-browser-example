@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import * as service from './service';
+import service from './service';
 
 // Discutir mejores soluciones/architectura 
 // para guardar un token de session

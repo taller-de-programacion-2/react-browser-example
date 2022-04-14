@@ -10,31 +10,31 @@ import {
 import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 
-const App = () => {
-  return (
-    <SessionProvider>
-      <WithSession>
-        <div>
-          <nav>
-            <span style={{ marginRight: '1em' }}>
-              <Link to='/'>home</Link>
-            </span>
-            <span >
-              <Link to='/about'>about</Link>
-            </span>
-          </nav>
-          <Routes>
-            <Route path='/'
-              element={<Home />} />
-            <Route path='/about'
-              element={<About />} />
-          </Routes>
-        </div>
-      </WithSession>
-      <WithoutSession>
-        <Login />
-      </WithoutSession>
-    </SessionProvider>);
-}
+const App = () => (
+  <SessionProvider>
+    <WithSession>
+      <div>
+        <nav>
+          <span style={{ marginRight: '1em' }}>
+            <Link to='/'>home</Link>
+          </span>
+          <span >
+            <Link to='/about'>about</Link>
+          </span>
+        </nav>
+        <Routes>
+          <Route path='/'
+            element={<Home />} />
+          <Route path='/about'
+            element={<About />} />
+        </Routes>
+      </div>
+    </WithSession>
+    <WithoutSession>
+      <Login />
+    </WithoutSession>
+  </SessionProvider>
+);
+
 
 export default App;
