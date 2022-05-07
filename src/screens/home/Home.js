@@ -8,14 +8,13 @@ function Home({ token, logout }) {
 
     const fetchPage = async (page) => {
         const { data, total_pages } = await listUsers(page);
-        setPage(page)
         setTotal(total_pages);
         setUsers(data);
     };
 
     const UserPages = () => {
-        const nextPage = () => fetchPage(page + 1);
-        const prevPage = () => fetchPage(page - 1)
+        const nextPage = () => setPage(page + 1);
+        const prevPage = () => setPage(page - 1)
         return <div>
             <ul>
                 {users.map(user => <li key={user.id}>
@@ -34,9 +33,15 @@ function Home({ token, logout }) {
         </div>
     }
     useEffect(() => {
-        fetchPage(1)
-        return () => { }
-    }, []);
+        console.log(`fetching ${page}`);
+        fetchPage(page);
+    }, [page]);
+
+    useEffect(() => {
+        return () => {
+            console.log("Home: clean up");
+        }
+    }, [])
     return (
         <div>
             <div style={{ backgroundColor: 'green' }}>
