@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import "./styles.scss";
 
 const Listing = ({ fetchPage, ItemComponent }) => {
@@ -7,19 +6,24 @@ const Listing = ({ fetchPage, ItemComponent }) => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(1);
 
-  const doFetchPage = async (page) => {
-    const { data, total } = await fetchPage(page);
-    setTotal(total);
-    setData(data);
-  };
-
   const nextPage = () => setPage(page + 1);
   const prevPage = () => setPage(page - 1);
 
   useEffect(() => {
+    let isMounted = true;
+    const doFetchPage = async (page) => {
+      const { data, total } = await fetchPage(page);
+      if (isMounted) {
+        setTotal(total);
+        setData(data);
+      }
+    };
     console.log(`fetching ${page}`);
     doFetchPage(page);
-  }, [page, doFetchPage]);
+    return () => {
+      isMounted = false;
+    };
+  }, [page]);
 
   return (
     <div className="users-list-wrapper">

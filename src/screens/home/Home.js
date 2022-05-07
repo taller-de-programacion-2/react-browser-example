@@ -19,7 +19,7 @@ function Home() {
       console.log("Home: clean up");
     };
   }, []);
-  
+
   return (
     <div className="container">
       <div className="inner-wrapper">
