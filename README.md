@@ -1,3 +1,13 @@
+# 2 Login Connectado
+* package.json: se agrega axios para el manejo de request http `npm add axios`.
+* screen/Login/Login.js: se agrega mas estado para manejar errores, indicadores de actividad y almacenamiento del token de login. 
+*Principios de UX*: 
+    - Visibilidad del estado del sistema: esta procesando el request.
+    - Prevención de errores: se deshabilitan los controles cuando se esta procesando el request, para evitar request duplicados.
+* screen/Login/service.js: hace el request de login utilizando axios. 
+Notar el uso de async/await + try/catch, para simplificar el encadenado de promises(la programación imperativa es un feature, es mas facil seguir los pasos en el orden de lectura). 
+Notar el manejo de errores mediante exceptions.
+
 # 1 Login Desconectado
 * javascript vs nodejs: import/export
 * index.js: setup de react para montar el componente del proyecto `App` sobre el nodo root de `public/index.html`
