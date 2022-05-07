@@ -11,12 +11,10 @@ const Listing = ({ fetchPage }) => {
     };
     const nextPage = () => setPage(page + 1);
     const prevPage = () => setPage(page - 1);
-
     useEffect(() => {
         console.log(`fetching ${page}`);
         doFetchPage(page);
     }, [page]);
-
     return <div>
         <ul>
             {data.map(user => <li key={user.id}>
