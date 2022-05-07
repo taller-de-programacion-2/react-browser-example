@@ -1,10 +1,12 @@
 # 1 Login Desconectado
+* javascript vs nodejs: import/export
 * index.js: setup de react para montar el componente del proyecto `App` sobre el nodo root de `public/index.html`
 * App.js: componente raiz que representa a la applicación.
 Va a ser el coordinador de las pantallas y componentes de alto nivel de la app. 
 * screens/Login.js: pantalla de login, hace uso de `useState` para manejar el estado interno de la pantalla.
 conecta los eventos de los distintos componentes con handlers que actualizan el estado.
 Notar que los handler se puede utilizar inline.
+Como validar los datos al ingreso?
 
 # Getting Started with Create React App
 
