@@ -1,29 +1,51 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { useSession } from "../../contexts/auth/Auth";
+
+const loginReducer = (state, action) => {
+    switch (action.type) {
+        case "set_field":
+            const { field, value } = action;
+            return {
+                ...state,
+                error: '',
+                [field]: value
+            };
+        case "error":
+            const { message } = action;
+            return {
+                ...state,
+                error: message,
+                loading: false
+            }
+        case "loading":
+            return {
+                ...state,
+                loading: true
+            };
+        default:
+            return state;
+    }
+}
 
 const Login = () => {
     const session = useSession();
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
+    const [state, dispatch] = useReducer(loginReducer, {});
+    const { email, password, error, loading } = state;
+
     const doLogin = async (_) => {
-        setLoading(true)
+        dispatch({ type: 'loading' })
         try {
             await session.login({ email, password })
-        } catch (e) {
-            setError(e.message)
-            setLoading(false)
+        } catch ({ message }) {
+            dispatch({ type: 'error', message });
         }
     }
-    const updateEmail = (e) => {
-        setEmail(e.target.value)
-        setError('')
-    }
-    const updatePassword = (e) => {
-        setPassword(e.target.value)
-        setError('')
-    }
+
+    const setField =
+        (field) =>
+            ({ target: { value } }) =>
+                dispatch({ type: 'set_field', field, value })
+
     return (
         <div>
             <h1>Users</h1>
@@ -38,14 +60,14 @@ const Login = () => {
                 <div>
                     <span>email:</span>
                     <input type="text"
-                        onChange={updateEmail}
+                        onChange={setField('email')}
                         disabled={loading}
                         name='email' />
                 </div>
                 <div>
                     <span>password:</span>
                     <input type="password"
-                        onChange={updatePassword}
+                        onChange={setField('password')}
                         disabled={loading}
                         name='password' />
                 </div>
