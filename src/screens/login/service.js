@@ -10,8 +10,16 @@ const login = async (credentials) => {
 
         return response.data;
     } catch (error) {
-        console.error(error.message);
-        throw new Error('Service is not available at the moment')
+        // Mostrar los errores relevantes al usuario.
+        // Los mensajes de error deberian usar un lenguaje 
+        // que el usuario comprenda. 
+        // Mostrar los mensajes de error del back, 
+        // unicamente si son humanamente lejibles.
+        const message = (error.response?.data?.error
+            // || error.message
+            || 'Service is not available at the moment')
+        console.error(message);
+        throw new Error(message)
     }
 }
 export default login;
