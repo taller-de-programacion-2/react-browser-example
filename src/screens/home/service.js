@@ -1,22 +1,12 @@
+import axios from "axios";
 
 export async function listUsers(page) {
-    const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/users?page=${page}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    })
-    let json = null
     try {
-        json = await res.json()
+        const res = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/users?page=${page}`)
+        return res.data
     } catch (e) {
-        console.error(e.message ||'error parsing json')
+        console.error(e.message || 'error parsing json')
         throw new Error('Service is not available at the moment')
     }
-    if (!res.ok) {
-        throw new Error(json.error)
-    }
-    return json
 }
