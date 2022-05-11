@@ -14,7 +14,7 @@ const login = async (credentials) => {
         // Los mensajes de error deberian usar un lenguaje 
         // que el usuario comprenda. 
         // Mostrar los mensajes de error del back, 
-        // unicamente si son humanamente lejibles.
+        // unicamente si son humanamente legibles.
         const message = (error.response?.data?.error
             // || error.message
             || 'Service is not available at the moment')
