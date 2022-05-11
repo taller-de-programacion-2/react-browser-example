@@ -11,7 +11,7 @@ import {useSession} from '../../contexts/auth/Auth';
 >>>>>>> 6752edb (Router+useContext)
 =======
 import { useEffect } from "react";
-import { listUsers } from './service'
+import usersService from '../../services/users'
 import { useSession } from '../../contexts/auth/Auth';
 import Listing from "../../components/listing/Listing";
 >>>>>>> ad9d81f (Extract component)
@@ -73,7 +73,7 @@ function Home() {
 
     const UserPages = () =>
         <Listing fetchPage={async (page) => {
-            const { data, total_pages } = await listUsers(page)
+            const { data, total_pages } = await usersService.listUsers(page)
             return { data, total: total_pages };
         }} />;
 >>>>>>> ad9d81f (Extract component)
