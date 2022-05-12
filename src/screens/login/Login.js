@@ -1,5 +1,6 @@
 import { useState } from "react";
 import login from "./service"
+import "../../styles/login.scss";
 
 const Login = ({onLogin}) => {
     const [email, setEmail] = useState('')
@@ -25,7 +26,8 @@ const Login = ({onLogin}) => {
         setError('')
     }
     return (
-        <div>
+        <div className="container">
+            <div className="inner-wrapper">
             <h1>Users</h1>
             <p>See other users profiles</p>
             <div style={{ backgroundColor: 'red' }}>
@@ -34,27 +36,29 @@ const Login = ({onLogin}) => {
             {loading && <div style={{ backgroundColor: 'yellow' }}>
                 Loading ...
             </div>}
-            <div>
-                <div>
-                    <span>email:</span>
+           
+            {/* <p>See other users profiles</p> */}
+            <div className="form">
+                <div className="form-control">
+                    <label>Email</label>
                     <input type="text"
                         onChange={updateEmail}
                         disabled={loading} 
                         name='email'/>
                 </div>
-                <div>
-                    <span>password:</span>
+                <div className="form-control">
+                    <label>Password</label>
                     <input type="password"
                         onChange={updatePassword}
                         disabled={loading}
                         name='password' />
                 </div>
-                <div>
-                    <button onClick={doLogin}
-                        disabled={loading}>
+                <div className="button-wrapper">
+                    <button onClick={doLogin} disabled={loading}>
                         Log In
                     </button>
                 </div>
+            </div>
             </div>
         </div>
     );
