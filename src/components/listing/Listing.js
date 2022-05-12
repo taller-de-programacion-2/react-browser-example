@@ -17,7 +17,7 @@ const Listing = ({ fetchPage, ItemComponent }) => {
     useEffect(() => {
         console.log(`fetching ${page}`);
         doFetchPage(page);
-    }, [page, doFetchPage]);
+    }, [page]);
 
     return <div>
         <ul>
