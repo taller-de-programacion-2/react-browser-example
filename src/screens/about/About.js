@@ -1,5 +1,5 @@
-export default function About() {
-    return <div>
+const About = () => (
+    <div>
         <h1>About</h1>
         <p>Developed using:</p>
         <ul>
@@ -7,4 +7,6 @@ export default function About() {
             <li> <a href={process.env.REACT_APP_API_URL}>reqres.in</a></li>
         </ul>
     </div>
-}
+);
+
+export default About;

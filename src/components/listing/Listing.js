@@ -5,11 +5,11 @@ const Listing = ({ fetchPage, ItemComponent }) => {
     const [page, setPage] = useState(1);
     const [total, setTotal] = useState(1);
 
-    const doFetchPage = useCallback(async (page) => {
+    const doFetchPage = async (page) => {
         const { data, total } = await fetchPage(page);
         setTotal(total);
         setData(data);
-    }, [fetchPage]);
+    };
 
     const nextPage = () => setPage(page + 1);
     const prevPage = () => setPage(page - 1);

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import service from './service';
+import loginService from '../../services/login';
 
 // Discutir mejores soluciones/architectura 
 // para guardar un token de session
@@ -16,7 +16,7 @@ export function SessionProvider({ children }) {
     const [token, setToken] = useState();
 
     const login = async (credentials) => {
-        const { token } = await service.login(credentials)
+        const { token } = await loginService.login(credentials)
         localStorage.setItem('token', token)
         setToken(token)
     };
@@ -32,10 +32,12 @@ export function SessionProvider({ children }) {
         return () => { }
     }, []);
 
-    return <SessionContext.Provider
-        value={{ token, logout, login }}>
-        {children}
-    </SessionContext.Provider>;
+    return (
+        <SessionContext.Provider
+            value={{ token, logout, login }}>
+            {children}
+        </SessionContext.Provider>
+    );
 }
 
 export function WithSession({ children }) {

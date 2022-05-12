@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { listUsers } from './service'
+import usersService from '../../services/users'
 import { useSession } from '../../contexts/auth/Auth';
 import Listing from "../../components/listing/Listing";
 
@@ -15,7 +15,7 @@ function Home() {
         </div>);
 
     const listUserAdapter = async (page) => {
-        const { data, total_pages } = await listUsers(page)
+        const { data, total_pages } = await usersService.listUsers(page)
         return { data, total: total_pages };
     }
 
