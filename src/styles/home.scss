@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .menu {
+    background-color: rgb(23, 33, 59);
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: right;
+    gap: 16px;
+    padding: 16px 0;
+
+    .greetings {
+      margin-right: 24px;
+      span {
+        margin-right: 24px;
+      }
+      button {
+        margin-top: 16px;
+        padding: 8px;
+        border-radius: 10px;
+        background-color: rgb(43, 86, 126);
+        color: white;
+        align-self: right;
+      }
+    }
+  }
+  .inner-wrapper {
+    width: 90%;
+  }
+}
+
+.users-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.users-list {
+  list-style-type: none;
+}

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { listUsers } from './service'
 
+import "../../styles/home.scss";
+
 function Home({ token, logout }) {
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(1);
@@ -8,41 +10,37 @@ function Home({ token, logout }) {
 
     const fetchPage = async (page) => {
         const { data, total_pages } = await listUsers(page);
-<<<<<<< HEAD
-=======
         setPage(page)
->>>>>>> 0af5b68 (Use localstorage to remember token)
         setTotal(total_pages);
         setUsers(data);
     };
 
     const UserPages = () => {
-<<<<<<< HEAD
-        const nextPage = () => setPage(page + 1);
-        const prevPage = () => setPage(page - 1)
-=======
         const nextPage = () => fetchPage(page + 1);
         const prevPage = () => fetchPage(page - 1)
->>>>>>> 0af5b68 (Use localstorage to remember token)
-        return <div>
+
+        return (
+        <div className="users-list-wrapper">
             <ul>
-                {users.map(user => <li key={user.id}>
-                    {user.first_name} / {user.email}
+                {users.map(user => (
+                <li className="users-list" key={user.id}>
                     <img src={user.avatar} />
-                </li>)
+                    <span>{user.first_name} / {user.email}</span>
+                </li>))
                 }
             </ul>
-            <button onClick={prevPage} disabled={page === 1}>
-                prev
-            </button>
-            {page}
-            <button onClick={nextPage} disabled={page === total}>
-                next
-            </button>
-        </div>
+            <div className="buttons-wrapper">
+                <button onClick={prevPage} disabled={page === 1}>
+                    prev
+                </button>
+                {page}
+                <button onClick={nextPage} disabled={page === total}>
+                    next
+                </button>
+            </div>
+        </div>)
     }
     useEffect(() => {
-<<<<<<< HEAD
         console.log(`fetching ${page}`);
         fetchPage(page);
     }, [page]);
@@ -52,23 +50,23 @@ function Home({ token, logout }) {
             console.log("Home: clean up");
         }
     }, [])
-=======
-        fetchPage(1)
-        return () => { }
-    }, []);
->>>>>>> 0af5b68 (Use localstorage to remember token)
     return (
-        <div>
-            <div style={{ backgroundColor: 'green' }}>
-                Token: {token}
-            </div>
-            <div>
-                <span>
-                    Welcome Home!
+        <div className="container">
+            <div className="inner-wrapper">
+                
+            <div className="menu">
+                <div>
+                    Token: {token}
+                </div>
+                <div className="greetings">
+                    <span>
+                        Welcome Home!
+                    </span>
                     <button onClick={logout}>Log out</button>
-                </span>
+                </div>
             </div>
-            <UserPages />
+                <UserPages />
+            </div>
         </div>
     );
 }
