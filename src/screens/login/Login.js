@@ -9,6 +9,7 @@ const Login = ({onLogin}) => {
     const [loading, setLoading] = useState(false)
     const doLogin = async (_) => {
         setLoading(true)
+        debugger
         try {
             const { token } = await login({ email, password })
             onLogin(token)
