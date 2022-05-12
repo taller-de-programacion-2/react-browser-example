@@ -18,7 +18,7 @@ function Home() {
             <div className="inner-wrapper">
                 
             <div className="menu">
-                <div>
+                <div className="links">
                     <nav>
                         <span style={{ marginRight: '1em' }}>
                             <Link to='/'>home</Link>
