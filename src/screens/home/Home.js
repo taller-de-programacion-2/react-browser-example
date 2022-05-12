@@ -15,7 +15,7 @@ function Home() {
         </div>);
 
     const listUserAdapter = async (page) => {
-        const { data, total_pages } = await listUsers(page)
+        const { data, total_pages } = await usersService.listUsers(page)
         return { data, total: total_pages };
     }
 
