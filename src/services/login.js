@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 const login = async (credentials) => {
@@ -23,4 +22,4 @@ const login = async (credentials) => {
     }
 }
 
-export default {login};
+export default { login };
