@@ -18,6 +18,7 @@ function Home() {
             console.log("Home: clean up");
         }
     }, [])
+<<<<<<< HEAD
 
     return (
         <div>
@@ -29,8 +30,25 @@ function Home() {
                     Welcome Home!
                     <button onClick={session.logout}>Log out</button>
                 </span>
+=======
+    return (
+        <div className="container">
+            <div className="inner-wrapper">
+                
+            <div className="menu">
+                <div>
+                    Token: {session.token}
+                </div>
+                <div className="greetings">
+                    <span>
+                        Welcome Home!
+                    </span>
+                    <button onClick={session.logout}>Log out</button>
+                </div>
             </div>
-            <UserPages />
+                <UserPages />
+>>>>>>> cbd746e (tyling)
+            </div>
         </div>
     );
 }

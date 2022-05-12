@@ -10,7 +10,6 @@ const Login = () => {
     const [loading, setLoading] = useState(false)
     const doLogin = async (_) => {
         setLoading(true)
-        debugger
         try {
             await session.login({ email, password })
         } catch (e) {
