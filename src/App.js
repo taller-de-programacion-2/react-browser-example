@@ -4,25 +4,19 @@ import About from './screens/about/About';
 import {
   SessionProvider,
   WithSession,
-  WithoutSession,
+  WithoutSession
+} from './contexts/auth/Auth';
+import {
   Link,
   Routes,
   Route
-} from './contexts/auth/Auth';
+} from "react-router-dom";
 import './App.css';
 
 const App = () => (
   <SessionProvider>
     <WithSession>
       <div>
-        <nav>
-          <span style={{ marginRight: '1em' }}>
-            <Link to='/'>home</Link>
-          </span>
-          <span >
-            <Link to='/about'>about</Link>
-          </span>
-        </nav>
         <Routes>
           <Route path='/'
             element={<Home />} />

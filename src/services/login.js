@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const login = async (credentials) => {
+const login = async (credentials) => {
     try {
         const response = await axios.post(
             `${process.env.REACT_APP_API_URL}/api/login`,
@@ -21,3 +21,5 @@ export const login = async (credentials) => {
         throw new Error(message)
     }
 };
+
+export default {login};
