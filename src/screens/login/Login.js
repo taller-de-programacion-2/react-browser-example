@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { useSession } from "../../contexts/auth/Auth";
+import "../../styles/login.scss";
 
 const loginReducer = (state, action) => {
   switch (action.type) {
@@ -29,8 +30,13 @@ const loginReducer = (state, action) => {
 
 const Login = () => {
   const session = useSession();
-  const [state, dispatch] = useReducer(loginReducer, {});
-  const { email, password, error, loading } = state;
+  const [{ email, password, status, message }, dispatch] = useReducer(
+    loginReducer,
+    {}
+  );
+
+  const loading = status === "loading";
+  const error = status === "error";
 
   const doLogin = async (_) => {
     dispatch({ type: "loading" });
@@ -40,45 +46,46 @@ const Login = () => {
       dispatch({ type: "error", message });
     }
   };
-
   const setField =
     (field) =>
     ({ target: { value } }) =>
       dispatch({ type: "set_field", field, value });
 
   return (
-    <div>
-      <h1>Users</h1>
-      <p>See other users profiles</p>
-      <div style={{ backgroundColor: "red" }}>{error}</div>
-      {loading && <div style={{ backgroundColor: "yellow" }}>Loading ...</div>}
-      <div>
-        <div>
-          <span>email:</span>
-          <input
-            type="text"
-            onChange={setField("email")}
-            disabled={loading}
-            name="email"
-          />
-        </div>
-        <div>
-          <span>password:</span>
-          <input
-            type="password"
-            onChange={setField("password")}
-            disabled={loading}
-            name="password"
-          />
-        </div>
-        <div>
-          <button onClick={doLogin} disabled={loading}>
-            Log In
-          </button>
+    <div className="container">
+      <div className="inner-wrapper">
+        <h1>Users</h1>
+        {error && <div style={{ backgroundColor: "red" }}>{message}</div>}
+        {loading && (
+          <div style={{ backgroundColor: "yellow" }}>Loading ...</div>
+        )}
+        <div className="form">
+          <div className="form-control">
+            <label>Email</label>
+            <input
+              type="email"
+              onChange={setField("email")}
+              disabled={loading}
+              name="email"
+            />
+          </div>
+          <div className="form-control">
+            <label>Password</label>
+            <input
+              type="password"
+              onChange={setField("password")}
+              disabled={loading}
+              name="password"
+            />
+          </div>
+          <div className="button-wrapper">
+            <button onClick={doLogin} disabled={loading}>
+              Log In
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default Login;

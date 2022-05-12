@@ -16,4 +16,5 @@ const listUsers = async (page) => {
   }
 };
 
-export default { listUsers };
+const service = { listUsers };
+export default service;

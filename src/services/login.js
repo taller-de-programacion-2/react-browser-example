@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 const login = async (credentials) => {
@@ -21,6 +20,6 @@ const login = async (credentials) => {
         console.error(message);
         throw new Error(message)
     }
-}
-
-export default {login};
+};
+const service = {login}
+export default service;
