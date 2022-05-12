@@ -10,8 +10,10 @@ const Login = () => {
     const [loading, setLoading] = useState(false)
     const doLogin = async (_) => {
         setLoading(true)
+        debugger
         try {
             const { token } = await login({ email, password })
+            debugger
             setToken(token)
         } catch (e) {
             setError(e.message)
