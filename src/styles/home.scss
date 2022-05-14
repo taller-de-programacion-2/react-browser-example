@@ -1,6 +1,4 @@
-.container {
-  display: flex;
-  flex-direction: column;
+.home-container {
   justify-content: center;
   .menu {
     background-color: rgb(23, 33, 59);
@@ -37,14 +35,4 @@
   .inner-wrapper {
     width: 90%;
   }
-}
-
-.users-list-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-.users-list {
-  list-style-type: none;
 }

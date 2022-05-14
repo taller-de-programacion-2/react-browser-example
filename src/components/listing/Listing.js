@@ -28,7 +28,7 @@ const Listing = ({ fetchPage, ItemComponent }) => {
   return (
     <div className="users-list-wrapper">
       <ul className="users-list">
-        {data.map((user) => (
+        {data.map((item) => (
           <li key={item.id}>
             <ItemComponent item={item} />
           </li>

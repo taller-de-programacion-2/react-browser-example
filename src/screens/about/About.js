@@ -1,7 +1,7 @@
 import "../../styles/about.scss";
 
 const About = () => (
-    <div className="container">
+    <div className="about-container">
         <div className="content">
             <h1>About</h1>
             <p>Developed using:</p>
