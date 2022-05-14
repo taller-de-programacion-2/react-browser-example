@@ -52,7 +52,7 @@ const Login = () => {
       dispatch({ type: "set_field", field, value });
 
   return (
-    <div className="container">
+    <div className="login-container">
       <div className="inner-wrapper">
         <h1>Users</h1>
         {error && <div style={{ backgroundColor: "red" }}>{message}</div>}

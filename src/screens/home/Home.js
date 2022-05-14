@@ -26,25 +26,17 @@ function Home() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="inner-wrapper">
+    <div className="home-container">
+      <div>
         <div className="menu">
-          <div className="links">
-            <nav>
-              <span style={{ marginRight: "1em" }}>
-                <Link to="/">home</Link>
-              </span>
-              <span>
-                <Link to="/about">about</Link>
-              </span>
-            </nav>
-          </div>
           <div>Token: {session.token}</div>
           <div className="greetings">
             <span>Welcome Home!</span>
             <button onClick={session.logout}>Log out</button>
           </div>
-          <Listing ItemComponent={UserCard} fetchPage={listUserAdapter} />
+          <div>
+            <Listing ItemComponent={UserCard} fetchPage={listUserAdapter} />
+          </div>
         </div>
       </div>
     </div>
