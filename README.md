@@ -1,4 +1,9 @@
 # 2 Login Connectado
+* agregar .env con la siguiente envvar:
+  REACT_APP_API_URL=https://reqres.in
+  Para probar login usar este usuario y pass:
+   * "email": "eve.holt@reqres.in"
+   * "password": "pistol"
 * package.json: se agrega axios para el manejo de request http `npm add axios`.
 * screen/Login/Login.js: se agrega mas estado para manejar errores, indicadores de actividad y almacenamiento del token de login. 
 *Principios de UX*: 
